@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html> 
+    <head> 
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head> 
+    <body> 
+        <div class="title">Hello world!</div>
+        <p>All paragraphs are styled like this except for</p>
+        <p id="special">this one</p>
+        
+        <script>
+        var a = document.getElementById("special");
+        a.addEventListener("mousedown",function(){
+            alert('hello world!')
+            },false);   
+        </script>
+    </body> 
+</html> 
