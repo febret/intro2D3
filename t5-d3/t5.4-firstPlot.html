@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Wealth & Health of the N-Nations</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+  </head>
+  <body>
+
+    <h1>The Wealth & Health of the N-Nations</h1>
+
+    <p id="chart_area"></p>
+
+    <script>
+        d3.json("https://raw.githubusercontent.com/febret/intro2D3/master/t5-d3/nations.json", function(nations) { 
+        var chart_area = d3.select("#chart_area");
+        var frame = chart_area.append("svg");
+
+        // Create canvas inside frame.
+        var canvas = frame.append("g");
+
+        // Set margins, width, and height.
+        var margin = {top: 19.5, right: 19.5, bottom: 19.5, left: 39.5};
+        var frame_width = 960;
+        var frame_height = 350;
+        var canvas_width = frame_width - margin.left - margin.right;
+        var canvas_height = frame_height - margin.top - margin.bottom;
+
+        // Set svg attributes width and height.
+        frame.attr("width", frame_width);
+        frame.attr("height", frame_height);
+
+        // Shift the chart and make it slightly smaller than the svg canvas.
+        canvas.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        // Various scales. These domains make assumptions of data, naturally.
+        var xScale = d3.scale.log(); // income
+        xScale.domain([250, 1e5]);
+        xScale.range([0, canvas_width]);  
+
+        var yScale = d3.scale.linear().domain([10, 85]).range([canvas_height, 0]);  // life expectancy
+        var rScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]); // life expectancy
+
+        // Creating the x & y axes.
+        var xAxis = d3.svg.axis().orient("bottom").scale(xScale);
+        var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+        // Next step: push the axes into the chart
+        // Add the x-axis.
+        canvas.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + canvas_height + ")")
+            .call(xAxis);
+
+        // Add the y-axis.
+        canvas.append("g")
+            .attr("class", "y axis")
+            .call(yAxis);
+            
+
+        var data_canvas = canvas.append("g")
+        .attr("class", "data_canvas")
+
+        var dot = data_canvas.selectAll(".dot")
+        .data(nations, function(d){return d.name});
+
+        dot.enter().append("circle").attr("class","dot")                
+                      .attr("cx", function(d) { return xScale(d.income[d.income.length-1]); }) // this is how attr knows to work with the data
+                      .attr("cy", function(d) { return yScale(d.lifeExpectancy[d.lifeExpectancy.length-1]); })
+                      .attr("r", function(d) { return rScale(d.population[d.population.length-1]); });            
+        });
+    </script>
+  </body>
+</html>

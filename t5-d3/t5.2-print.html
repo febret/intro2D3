@@ -13,9 +13,13 @@
     <p id="chart_area"></p>
 
     <script>
-        d3.json("nations.json", function(nations) { 
+        d3.json("https://raw.githubusercontent.com/febret/intro2D3/master/t5-d3/nations.json", function(nations) { 
             d3.select("#chart_area")
-                .text(nations);
+                .selectAll("p")
+                .data(nations)
+                .enter()
+                .append("p")
+                    .text(function(d) { return d.name; });
         });
     </script>
   </body>

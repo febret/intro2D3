@@ -1,19 +1,33 @@
-.title
-{
-    color: red;
-    font-size: 40px;
-    text-align: center;
-    transform: rotate(-10deg);
+
+text {
+  font: 10px sans-serif;
 }
 
-p
-{
-    color: green;
-    font-size: 20px;
+.dot {
+  stroke: #000;
 }
 
-#special
-{
-    color: blue;
-    font-size: 30px;
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.label {
+  fill: #777;
+}
+
+.year.label {
+  font: 500 196px "Helvetica Neue";
+  fill: #ddd;
+}
+
+.year.label.active {
+  fill: #aaa;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  cursor: ew-resize;
 }
