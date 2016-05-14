@@ -1,7 +1,7 @@
 To run this example install **Node.js**
 
 Then use npm to install this package dependencies and **http-server**. 
-You can use http-server it to run a local web server.
+You can use http-server to run a local web server.
 ```
 > npm install
 > npm install http-server -g
