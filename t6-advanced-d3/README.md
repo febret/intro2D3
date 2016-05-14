@@ -11,7 +11,7 @@ To start the http server: type `http-server` in this directory, then open a brow
 to `localhost:8080`.
 
 ## Contents ##
-- **transactins.csv**: a csv file containing the art transaction data
+- **transactions.csv**: a csv file containing the art transaction data
 - **package.json**: the npm package description used by `npm install`
 - **index.html**: the main html file
 - **data.js**: functions for loading the source data and generating the similarity matrix
