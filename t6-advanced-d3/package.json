@@ -1,0 +1,17 @@
+{
+  "name": "map",
+  "version": "1.0.0",
+  "description": "example for D3.js class",
+  "main": "map.js",
+  "dependencies": {
+    "d3": "^3.5.12",
+    "jquery": "^2.1.4",
+    "jqwidgets-framework": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
